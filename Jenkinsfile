@@ -1,13 +1,10 @@
 pipeline {
-   agent any
-
-   stages {
-      stage('Build') {
-        steps {
-          echo 'Building Python File'
-          sh 'HelloPython.py'
+    agent { docker { image 'python:3.5.1' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'HelloPython.py'
+            }
         }
-   }
-  
-   }
-  }
+    }
+}
